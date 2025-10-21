@@ -1,4 +1,4 @@
-import {Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 export const authMiddleware = (
@@ -7,7 +7,7 @@ export const authMiddleware = (
   next: NextFunction
 ): void => {
   try {
-    const token = req.cookies.token;
+    const token = req.cookies?.token;
 
     if (!token) {
       res.status(401).json({ message: 'No token provided' });
