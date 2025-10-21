@@ -14,9 +14,3 @@ export interface Product {
   createdAt?: Date;
   updatedAt?: Date;
 }
-
-export interface AuthRequest extends Request {
-  user?: {
-    email: string;
-  };
-}
