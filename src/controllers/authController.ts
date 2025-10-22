@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
 
 const DEMO_USER = {
   email: 'demo@demo.com',
@@ -10,14 +9,13 @@ const DEMO_USER = {
 export const login = async (req: Request, res: Response): Promise<void> => {
   try {
     const { email, password } = req.body;
-
     if (email !== DEMO_USER.email) {
       res.status(401).json({ message: 'Invalid credentials' });
+
       return;
     }
 
-    const isValidPassword = await bcrypt.compare(password, DEMO_USER.password);
-    if (!isValidPassword) {
+    if (password !== DEMO_USER.password) {
       res.status(401).json({ message: 'Invalid credentials' });
       return;
     }
