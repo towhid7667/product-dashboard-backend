@@ -7,6 +7,8 @@ export const authMiddleware = (
   next: NextFunction
 ): void => {
   try {
+    console.log('Auth middleware - Cookies:', req.cookies);
+    console.log('Auth middleware - Headers:', req.headers.cookie);
     const token = req.cookies?.token;
 
     if (!token) {
