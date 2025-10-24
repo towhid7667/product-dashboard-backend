@@ -15,7 +15,8 @@ export const getAllProducts = async (req: Request, res: Response): Promise<void>
 
     res.json(products);
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching products' });
+    console.error('Error fetching products:', error);
+    res.status(500).json({ message: 'Error fetching products', error: (error as Error).message });
   }
 };
 
